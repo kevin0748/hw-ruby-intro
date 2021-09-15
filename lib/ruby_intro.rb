@@ -92,5 +92,22 @@ end
 # Part 3
 
 class BookInStock
-# YOUR CODE HERE
+  attr_accessor :isbn, :price
+ 
+  def initialize(isbn, price)
+    if !(isbn.is_a? String) or isbn.length() == 0
+      raise ArgumentError
+    end 
+  
+    if !(price.is_a? Numeric) or price <= 0
+     raise ArgumentError
+    end 
+
+    @isbn = isbn
+    @price = price
+  end
+
+  def price_as_string
+    return "$%0.2f" % @price
+  end
 end
